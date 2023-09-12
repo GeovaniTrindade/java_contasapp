@@ -32,7 +32,6 @@ textarea.error {
 	<!-- componente messages -->
 	<jsp:include page="/WEB-INF/views/admin/components/messages.jsp"></jsp:include>
 
-
 	<div class="container mt-4">
 		<div class="card">
 			<div class="card-body">
@@ -40,34 +39,37 @@ textarea.error {
 				<p>Altere os dados da conta selecionada.</p>
 				<hr />
 
-				<form id="formEdicao">
+				<form id="formEdicao" action="editar-contas-post" method="post">
+
+					<!-- campo oculto -->
+					<input type="hidden" name="id" value="${id}" />
 
 					<div class="row mb-2">
 						<div class="col-md-6">
 							<label>Nome da conta:</label> <input type="text" id="nome"
-								name="nome" class="form-control" />
+								name="nome" class="form-control" value="${nome}" />
 						</div>
 						<div class="col-md-3">
 							<label>Data da conta:</label> <input type="date" id="data"
-								name="data" class="form-control" />
+								name="data" class="form-control" value="${data}" />
 						</div>
 						<div class="col-md-3">
 							<label>Valor da conta:</label> <input type="text" id="valor"
-								name="valor" class="form-control" />
+								name="valor" class="form-control" value="${valor}" />
 						</div>
 					</div>
 
 					<div class="row mb-2">
 						<div class="col-md-9">
 							<label>Descrição da conta:</label>
-							<textarea id="descricao" name="descricao" class="form-control"></textarea>
+							<textarea id="descricao" name="descricao" class="form-control">${descricao}</textarea>
 						</div>
 						<div class="col-md-3">
 							<label>Tipo da conta:</label> <select id="tipo" name="tipo"
 								class="form-select">
 								<option value="">Escolha uma opção</option>
-								<option value="1">Conta a receber</option>
-								<option value="2">Conta a pagar</option>
+								<option value="1" ${tipo == 1 ? "selected" : ""}>Conta a receber</option>
+								<option value="2" ${tipo == 2 ? "selected" : ""}>Conta a pagar</option>
 							</select>
 						</div>
 					</div>
